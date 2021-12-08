@@ -32,3 +32,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Archived Files ###
+*.0ld
+
+### Security Configurations ###
+SQL.cfg
+API_Auth.cfg
+API_Auth.xml
