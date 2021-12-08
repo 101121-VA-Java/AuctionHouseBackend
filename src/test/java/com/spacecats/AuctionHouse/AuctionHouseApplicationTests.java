@@ -1,10 +1,10 @@
-package com.spacecats.project2;
+package com.spacecats.AuctionHouse;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Project2ApplicationTests {
+class AuctionHouseApplicationTests {
 
 	@Test
 	void contextLoads() {
