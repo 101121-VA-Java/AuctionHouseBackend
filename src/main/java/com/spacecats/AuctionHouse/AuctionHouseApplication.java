@@ -1,13 +1,13 @@
-package com.spacecats.project2;
+package com.spacecats.AuctionHouse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Project2Application {
+public class AuctionHouseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Project2Application.class, args);
+		SpringApplication.run(AuctionHouseApplication.class, args);
 	}
 
 }
