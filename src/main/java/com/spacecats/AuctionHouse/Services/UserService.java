@@ -36,7 +36,7 @@ public class UserService {
 		ur.save(u);
 	}
 	
-	// public List<User> getUserByRole(Role role){
-	// 	return ur.findUsersByRole(role);
-	// }
+	public List<User> getUserByRole(Role role){
+		return ur.findUsersByRole(role);
+	}
 }
