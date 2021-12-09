@@ -19,7 +19,7 @@ public class UserService {
 	
 	public User getUserById(int id) {
 		for(User u : users) {
-			if(u.getU_id() == id) {
+			if(u.getId() == id) {
 				return u;
 			}
 		}
