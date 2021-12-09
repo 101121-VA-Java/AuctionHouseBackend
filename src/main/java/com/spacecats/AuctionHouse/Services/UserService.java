@@ -11,7 +11,7 @@ import com.spacecats.AuctionHouse.Models.User;
 
 @Service
 public class UserService {
-	private List<User> users = new ArrayList<>(); //TODO Replace with DAO layer
+	private List<User> users = new ArrayList<>();
 	
 	public List<User> getAllUsers(){
 		return users;
