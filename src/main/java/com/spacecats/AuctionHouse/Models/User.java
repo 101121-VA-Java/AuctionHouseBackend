@@ -2,16 +2,25 @@ package com.spacecats.AuctionHouse.Models;
 
 import java.util.Objects;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Component
+@Entity
+@Table(name="users")
 public class User {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int u_id;
 	private String u_fname;
 	private String u_lname;
 	private String u_username;
 	private String u_password;
 	private Role u_role;
+
 	
 	public int getU_id() {
 		return u_id;
