@@ -17,15 +17,15 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private int roleid;
 	private String fname;
 	private String lname;
-	private String username;
-	private String password;
-	private Role role;
+	private String uname;
+	private String pw;
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(fname, id, lname, password, role, username);
+		return Objects.hash(fname, id, lname, pw, roleid, uname);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -37,12 +37,12 @@ public class User {
 			return false;
 		User other = (User) obj;
 		return Objects.equals(fname, other.fname) && id == other.id && Objects.equals(lname, other.lname)
-				&& Objects.equals(password, other.password) && role == other.role
-				&& Objects.equals(username, other.username);
+				&& Objects.equals(pw, other.pw) && roleid == other.roleid
+				&& Objects.equals(uname, other.uname);
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", username=" + username
-				+ ", password=" + password + ", role=" + role + "]";
+		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", uname=" + uname
+				+ ", pw=" + pw + ", roleid=" + roleid + "]";
 	}
 }

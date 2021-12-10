@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spacecats.AuctionHouse.Daos.UserRepository;
 import com.spacecats.AuctionHouse.Exceptions.UNFException;
-import com.spacecats.AuctionHouse.Models.Role;
 import com.spacecats.AuctionHouse.Models.User;
 
 @Service
@@ -21,7 +20,7 @@ public class UserService {
 	public UserService(UserRepository ur) {
 		this.ur = ur;
 	}
-	
+
 	public List<User> getAllUsers(){
 		return ur.findAll();
 	}
@@ -30,13 +29,26 @@ public class UserService {
 		return ur.findById(id).orElseThrow(UNFException::new);
 	}
 	
+	public String login(User u1) {
+		List<User> users = ur.findByUname(u1.getUname());
+		for(User u2 : users) {
+			if(u1.getPw().equals(u2.getPw())) {
+				return u2.getId() + ":" + u2.getRoleid();
+			}
+		}
+		return null;
+	}
+
 	@Transactional(propagation=Propagation.REQUIRED)
-	public void createUser(User u) {
-		// bunch of logic
-		ur.save(u);
+	public String createUser(User u) {
+		u.setRoleid(2);
+		User result = ur.save(u);
+		int id = result.getId();
+		int roleid = result.getRoleid();
+		return id + ":" + roleid;
 	}
 	
-	public List<User> getUserByRole(Role role){
-		return ur.findUsersByRole(role);
+	public List<User> getUserByRoleid(int roleid){
+		return ur.findUsersByRoleid(roleid);
 	}
 }
