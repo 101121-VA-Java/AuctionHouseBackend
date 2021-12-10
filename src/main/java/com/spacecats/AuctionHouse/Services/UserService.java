@@ -29,11 +29,11 @@ public class UserService {
 		return ur.findById(id).orElseThrow(UNFException::new);
 	}
 	
-	public String login(User u1) {
+	public User login(User u1) {
 		List<User> users = ur.findByUname(u1.getUname());
 		for(User u2 : users) {
 			if(u1.getPw().equals(u2.getPw())) {
-				return u2.getId() + ":" + u2.getRoleid();
+				return u2;
 			}
 		}
 		return null;
