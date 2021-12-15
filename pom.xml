@@ -76,7 +76,9 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 	</dependencies>
+	
 	<build>
+		<finalName>AuctionHouseBackend</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
