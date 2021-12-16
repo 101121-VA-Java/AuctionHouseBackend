@@ -34,12 +34,10 @@ public class UserService {
 	}
 	
 	public User login(User u1) {
-		List<User> users = ur.findByUname(u1.getUname());
-		for(User u2 : users) {
-			if(u1.getPw().equals(u2.getPw())) {
-				u2.setPw(null);
-				return u2;
-			}
+		User u2 = ur.findByUname(u1.getUname());
+		if(u1.getPw().equals(u2.getPw())) {
+			u2.setPw(null);
+			return u2;
 		}
 		return null;
 	}
@@ -55,5 +53,15 @@ public class UserService {
 	
 	public List<User> getUserByRoleid(int roleid){
 		return ur.findUsersByRoleid(roleid);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public User update(User u1, int id) {
+		User u2 = ur.getById(id);
+		u2.setFname(u1.getFname());
+		u2.setLname(u1.getLname());
+		u2.setUname(u1.getUname());
+		u2.setPw(u1.getPw());
+		return ur.save(u2);
 	}
 }
