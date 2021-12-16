@@ -22,17 +22,22 @@ public class UserService {
 	}
 
 	public List<User> getAllUsers(){
-		return ur.findAll();
+		List<User> users = ur.findAll();
+		users.forEach(u -> u.setPw(null));
+		return users;
 	}
 	
 	public User getUserById(int id) {
-		return ur.findById(id).orElseThrow(UNFException::new);
+		User u = ur.findById(id).orElseThrow(UNFException::new);
+		u.setPw(null);
+		return u;
 	}
 	
 	public User login(User u1) {
 		List<User> users = ur.findByUname(u1.getUname());
 		for(User u2 : users) {
 			if(u1.getPw().equals(u2.getPw())) {
+				u2.setPw(null);
 				return u2;
 			}
 		}
