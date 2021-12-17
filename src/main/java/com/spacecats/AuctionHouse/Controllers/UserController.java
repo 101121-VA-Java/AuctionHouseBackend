@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.spacecats.AuctionHouse.Models.Bid;
 import com.spacecats.AuctionHouse.Models.User;
+import com.spacecats.AuctionHouse.Services.BidService;
 import com.spacecats.AuctionHouse.Services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,11 +38,6 @@ public class UserController {
 	public List<User> get(){
 		return us.getAllUsers();
 	}
-
-	@GetMapping("/{id}")
-	public ResponseEntity<User> getUserById(@PathVariable("id")int id) {
-		return new ResponseEntity<>(us.getUserById(id), HttpStatus.OK);
-	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id")int id, @Valid @RequestBody User user){
@@ -48,8 +46,16 @@ public class UserController {
 	}
 
 	@PostMapping
-	public ResponseEntity<String> register(@Valid @RequestBody User user){
-		String token = us.createUser(user);
-		return new ResponseEntity<>(token, HttpStatus.CREATED);
+	public ResponseEntity<User> register(@Valid @RequestBody User u){
+		String token = us.createUser(u);
+		u = us.login(u);
+		if(u != null) {
+			u.setPw(null);
+			token = u.getId() + ":" + u.getRoleid();
+			HttpHeaders headers = new HttpHeaders();
+			headers.set("Authorization", token);
+			return new ResponseEntity<>(u, headers, HttpStatus.CREATED);
+		}
+		else return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 	}
 }
