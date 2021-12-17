@@ -9,14 +9,13 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="art")
+@Table(name="bids")
 @Data
-public class Art {
+public class Bid {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String url;
-	private String artist;
-	private String name;
-	private int ownerid;
+	private int amount;
+	private int bidderid;
+	private int artid;
 }

@@ -1,6 +1,7 @@
 drop table if exists art;
 drop table if exists users;
 drop table if exists roles;
+drop table if exists bids;
 
 create table if not exists roles(
 	id serial primary key not null,
@@ -19,11 +20,16 @@ create table if not exists users(
 create table if not exists art(
 	id serial primary key not null,
 	url varchar(200),
-	artistname varchar(100),
-	artpiecename varchar(100),
-	highestbid integer,
-	bidderid integer references users(id),
+	artist varchar(100),
+	name varchar(500),
 	ownerid integer references users(id)
+);
+
+create table if not exists bids(
+	id serial primary key not null,
+	amount integer,
+	bidderid integer references users(id),
+	artid integer references art(id)
 );
 
 insert into public.roles 
