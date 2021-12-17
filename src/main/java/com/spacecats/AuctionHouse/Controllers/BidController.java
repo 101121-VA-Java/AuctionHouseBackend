@@ -36,7 +36,7 @@ public class BidController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<List<Bid>> getBidsByUserId(@PathVariable("id")int id) {
+	public ResponseEntity<List<Bid>> getBidsByBidderId(@PathVariable("id")int id) {
 		return new ResponseEntity<>(bs.getBidsByBidderid(id), HttpStatus.OK);
 	}
 
