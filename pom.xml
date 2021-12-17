@@ -73,7 +73,9 @@
 			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
+	
 	<build>
+		<finalName>AuctionHouseBackend</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
