@@ -2,6 +2,7 @@ package com.spacecats.AuctionHouse.Daos;
 
 import java.util.List;
 
+import com.spacecats.AuctionHouse.Models.Bid;
 import com.spacecats.AuctionHouse.Models.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;

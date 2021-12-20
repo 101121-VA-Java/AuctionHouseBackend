@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.spacecats.AuctionHouse.Daos.UserRepository;
 import com.spacecats.AuctionHouse.Exceptions.UNFException;
+import com.spacecats.AuctionHouse.Models.Bid;
 import com.spacecats.AuctionHouse.Models.User;
 
 @Service
