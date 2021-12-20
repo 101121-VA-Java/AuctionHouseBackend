@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,24 +25,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class BidController {
 
 	private BidService bs;
-	
+
 	@Autowired
 	public BidController(BidService bs) {
 		this.bs = bs;
 	}
 
 	@GetMapping
-	public List<Bid> get(){
+	public List<Bid> get(@RequestParam(name = "bidderId", required = false) Integer bidderId) {
+		if (bidderId != null) {
+			return bs.getBidsByBidderid(bidderId);
+		}
 		return bs.getAllBids();
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<List<Bid>> getBidsByBidderId(@PathVariable("id")int id) {
-		return new ResponseEntity<>(bs.getBidsByBidderid(id), HttpStatus.OK);
-	}
-
 	@PostMapping
-	public ResponseEntity<Bid> create(@Valid @RequestBody Bid b){
+	public ResponseEntity<Bid> create(@Valid @RequestBody Bid b) {
 		return new ResponseEntity<>(bs.createBid(b), HttpStatus.CREATED);
 	}
 }

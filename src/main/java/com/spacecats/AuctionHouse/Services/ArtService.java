@@ -37,4 +37,17 @@ public class ArtService {
 	public List<Art> getArtByOwnerId(int ownerid){
 		return ar.findArtsByOwnerid(ownerid);
 	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Art update(Art a1, int id) {
+		Art a2 = ar.getById(id);
+		a2.setOwnerid(a1.getOwnerid());
+		return ar.save(a2);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public String delete(int id){
+		ar.deleteById(id);
+		return "Successfully cancelled listing.";
+	}
 }

@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import com.spacecats.AuctionHouse.Models.Bid;
 import com.spacecats.AuctionHouse.Models.User;
-import com.spacecats.AuctionHouse.Services.BidService;
 import com.spacecats.AuctionHouse.Services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

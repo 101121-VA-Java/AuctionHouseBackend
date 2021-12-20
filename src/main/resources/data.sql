@@ -44,7 +44,6 @@ INSERT INTO public.users
 (fname, lname, uname, pw, roleid)
 VALUES('auctioneer', 'auctioneer', '1', '1', 1);
 
-
 INSERT INTO public.users
 (fname, lname, uname, pw, roleid)
 VALUES('client', 'client', '2', '2', 2);
