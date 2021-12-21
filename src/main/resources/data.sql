@@ -47,3 +47,27 @@ VALUES('auctioneer', 'auctioneer', '1', '1', 1);
 INSERT INTO public.users
 (fname, lname, uname, pw, roleid)
 VALUES('client', 'client', '2', '2', 2);
+
+INSERT INTO public.users
+(fname, lname, uname, pw, roleid)
+VALUES('client', 'client', '3', '3', 2);
+
+INSERT INTO public.art
+(id, url, artist, name, ownerid)
+VALUES(1, 'https://images.metmuseum.org/CRDImages/is/web-large/wb-38.40.126.JPG', null, 'Lamp', 1);
+
+INSERT INTO public.bids
+(id, amount, bidderid, artid)
+VALUES(1, 10, 2, 1);
+
+INSERT INTO public.bids
+(id, amount, bidderid, artid)
+VALUES(2, 15, 3, 1);
+
+INSERT INTO public.bids
+(id, amount, bidderid, artid)
+VALUES(3, 10000, 2, 1);
+
+INSERT INTO public.bids
+(id, amount, bidderid, artid)
+VALUES(4, 16, 3, 1);
