@@ -6,9 +6,6 @@ pipeline {
         PORT_CONT="8080"
         IMAGE_TAG="AuctionHouseBackend-demo"
         CONTAINER_NAME="AuctionHouseBackend-app"
-        DB_URL=credentials('DB_URL')
-        DB_USER=credentials('DB_USER')
-        DB_PASS=credentials('DB_PASS')
     }
 
    stages {
