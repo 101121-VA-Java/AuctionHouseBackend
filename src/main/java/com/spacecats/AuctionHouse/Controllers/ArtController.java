@@ -53,7 +53,8 @@ public class ArtController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> delete(@PathVariable("id")int id){
-		return new ResponseEntity<>(as.delete(id), HttpStatus.OK);
+	public ResponseEntity<Integer> delete(@PathVariable("id")int id){
+		as.delete(id);
+		return new ResponseEntity<>(id, HttpStatus.OK);
 	}
 }

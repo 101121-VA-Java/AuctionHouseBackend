@@ -46,8 +46,7 @@ public class ArtService {
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
-	public String delete(int id){
+	public void delete(int id){
 		ar.deleteById(id);
-		return "Successfully cancelled listing.";
 	}
 }

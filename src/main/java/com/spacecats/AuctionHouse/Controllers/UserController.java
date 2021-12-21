@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.spacecats.AuctionHouse.Models.Bid;
 import com.spacecats.AuctionHouse.Models.User;
 import com.spacecats.AuctionHouse.Services.UserService;
 
