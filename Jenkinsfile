@@ -4,8 +4,8 @@ pipeline {
     environment {
         PORT_HOST="8081"
         PORT_CONT="8080"
-        IMAGE_TAG="AuctionHouseBackend-demo"
-        CONTAINER_NAME="AuctionHouseBackend-app"
+        IMAGE_TAG="auctionhousebackend-demo"
+        CONTAINER_NAME="auctionhousebackend-app"
     }
 
    stages {
