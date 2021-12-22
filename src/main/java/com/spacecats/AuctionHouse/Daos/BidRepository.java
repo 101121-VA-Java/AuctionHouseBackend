@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BidRepository extends JpaRepository<Bid, Integer> {
-    List<Bid> findBidsByBidderid(int id); 
+    List<Bid> findBidsByBidderid(int id);
+    List<Bid> findBidsByArtid(int id); 
 }

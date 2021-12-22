@@ -5,7 +5,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.spacecats.AuctionHouse.Models.Art;
+import com.spacecats.AuctionHouse.Models.Bid;
 import com.spacecats.AuctionHouse.Services.ArtService;
+import com.spacecats.AuctionHouse.Services.BidService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,10 +29,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ArtController {
 
 	private ArtService as;
+	private BidService bs;
 	
 	@Autowired
-	public ArtController(ArtService as) {
+	public ArtController(ArtService as, BidService bs) {
 		this.as = as;
+		this.bs = bs;
 	}
 
 	@GetMapping
@@ -54,6 +58,11 @@ public class ArtController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Integer> delete(@PathVariable("id")int id){
+		System.out.println("art controller delete");
+		List<Bid> bids = this.bs.getBidsByArtId(id);
+		for (Bid bid : bids) {
+			this.bs.delete(bid.getId());
+		}
 		as.delete(id);
 		return new ResponseEntity<>(id, HttpStatus.OK);
 	}

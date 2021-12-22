@@ -29,9 +29,18 @@ public class BidService {
 		return br.findById(id).orElseThrow(UNFException::new);
 	}
 
+	public List<Bid> getBidsByArtId(int id) {
+		return br.findBidsByArtid(id);
+	}
+
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Bid createBid(Bid a) {
 		return br.save(a);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public void delete(int id){
+		br.deleteById(id);
 	}
 	
 	public List<Bid> getBidsByBidderid(int ownerid){
