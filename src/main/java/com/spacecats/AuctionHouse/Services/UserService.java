@@ -44,7 +44,7 @@ public class UserService {
 
 	@Transactional(propagation=Propagation.REQUIRED)
 	public String createUser(User u) {
-		u.setRoleid(2);
+		if(u.getRoleid() == 0) u.setRoleid(2);
 		User result = ur.save(u);
 		int id = result.getId();
 		int roleid = result.getRoleid();

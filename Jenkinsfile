@@ -6,6 +6,9 @@ pipeline {
         PORT_CONT="8080"
         IMAGE_TAG="auctionhousebackend-demo"
         CONTAINER_NAME="auctionhousebackend-app"
+        DB_URL=credentials('DB_URL')
+        DB_USER=credentials('DB_USER')
+        DB_PASS=credentials('DB_PASS')
     }
 
    stages {
@@ -15,7 +18,6 @@ pipeline {
                 properties([pipelineTriggers([githubPush()])])
             }
             git branch: 'main', url: 'https://github.com/101121-VA-Java/AuctionHouseBackend.git'
-
           }
       }
       stage('clean') {
@@ -46,7 +48,7 @@ pipeline {
         }
         stage('create container') {
             steps {
-                sh 'docker run -d --rm -p ${PORT_HOST}:${PORT_CONT} --name ${CONTAINER_NAME} ${IMAGE_TAG} '
+                sh 'docker run -e DB_URL=${DB_URL} -e DB_USER=${DB_USER} -e DB_PASS=${DB_PASS} -d --rm -p ${PORT_HOST}:${PORT_CONT} --name ${CONTAINER_NAME} ${IMAGE_TAG} '
             }
         }
     }
